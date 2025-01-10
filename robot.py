@@ -14,3 +14,5 @@ print(objekt1.meno)          # pristupujem k atributu meno daneho objetku
 objekt1.predstav_sa()        # pristupujem k metode, ktorý ma daný objekt k dispozicii
 
 objekt2 = Robot('Mat', 150) # vytvorenie druhého objektu
+objekt2.meno = 'Pat'
+print(objekt2.meno)
