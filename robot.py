@@ -2,22 +2,27 @@
 class Robot():
 
     def __init__(self, meno, hmotnost): # inicializacna metoda/konštruktor
-        self.meno = meno                # inštančná premenná
+        self.set_meno(meno)
         self.hmotnost = hmotnost
 
     def predstav_sa(self):
-        print(f'Volám sa {self.meno} a moja hmotnost je {self.hmotnost}')
+        print(f'Volám sa {self.__meno} a moja hmotnost je {self.hmotnost}')
 
-    def set_meno(self, meno):
+    def __set_meno(self, meno):
         if len(meno) < 4:
             raise ValueError('chyba kratke meno')
+        else:
+            self.__meno = meno
+
+
+    def __get_meno(self):
+        return self.__meno
+
+    meno = property(__get_meno, __set_meno)
 
 
 
-objekt1 = Robot('Jozo', 120) # vytvorenie objektu/inštancia 
-print(objekt1.meno)          # pristupujem k atributu meno daneho objetku
-objekt1.predstav_sa()        # pristupujem k metode, ktorý ma daný objekt k dispozicii
-
-objekt2 = Robot('Mat', 150) # vytvorenie druhého objektu
-objekt2.meno = 'Pat'
-print(objekt2.meno)
+objekt1 = Robot('Jozo', 120)
+#objekt1.meno = 'Jo'                 # atribut vytvorený cez property/ v tomto pripade nevieme vytvorit nekorektný objekt
+print(objekt1.meno)                  # pristupujem cez atribut meno, ktorý je vytvorený cez property 
+objekt1.meno = 'Jozinko'
