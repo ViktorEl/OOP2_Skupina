@@ -2,7 +2,7 @@
 class Robot():
 
     def __init__(self, meno, hmotnost): # inicializacna metoda/konštruktor
-        self.set_meno(meno)
+        self.__set_meno(meno)
         self.hmotnost = hmotnost
 
     def predstav_sa(self):
