@@ -30,6 +30,15 @@ class Auto():
     spotreba = property(__get_spotreba, __set_spotreba)
     znacka = property(__get_znacka)
 
+    def __str__(self):
+        return f'{self.__znacka} {self.__spotreba}'
+    
+    def __eq__(self, other):
+        if isinstance(other, Auto):
+            if self.__spotreba == other.__spotreba:
+                return True
+            return False
+        return False
 
 
 auto1 = Auto('skoda', 20)
