@@ -27,9 +27,13 @@ class Auto():
         return f'{self.__znacka} {self.model} {self.rok_vyroby}'
 
 
-    def __eq__(self, other):
+    def __eq__(self, other):                # magicka metoda, ktora porovnava dva objekty
         if isinstance(other, Auto):
-            pass
+            if self.__znacka == other.__znacka and self.model == other.model and self.rok_vyroby == other.rok_vyroby:
+                return True
+            else:
+                return False
+        return False
         
 
 
@@ -38,7 +42,12 @@ class Auto():
 
 auto1 = Auto('Skoda', 'Fabia', 2020)
 auto2 = Auto('Skoda', 'Octavia', 2022)
+auto3 = Auto('Skoda', 'Fabia', 2020)
 zoznam = [1, 2, 3]
+zoznam2 = [1, 1, 4]
 #print(dir(auto1))      # vypise vsetky dostupne metody a atributy pre dany objekt
 
+#print(auto1 == zoznam) # False zoznam nie je vytvorený triedou auto
+#print(auto1 == auto2)   # False druhy objekt je vytvoreny triedou Auto ale objekty nemaju rovnake atributy
+#print(auto1 == auto3)    # True - objekty maju rovnake atributy
 
