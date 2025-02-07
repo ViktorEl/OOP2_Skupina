@@ -31,7 +31,9 @@ class Auto():
     znacka = property(__get_znacka)
 
     def __str__(self):
-        return f'{self.__znacka} {self.__spotreba}'
+        return 
+        
+        '{self.__znacka} {self.__spotreba}'
     
     def __eq__(self, other):
         if isinstance(other, Auto):
@@ -42,6 +44,7 @@ class Auto():
 
 
 auto1 = Auto('skoda', 20)
-print(auto1.znacka)
+auto2 = Auto('mercedes', 20)
+print(auto1 == auto2)
 
     
