@@ -24,7 +24,11 @@ class MestoObyvatelia():
                 pocitadlo += 1
         return pocitadlo
 
-
+    def __str__(self):
+        retazec = ''
+        for obyvatel in self.obyvatelia:
+            retazec += f'{obyvatel.meno} {obyvatel.get_vek()} {obyvatel.get_pohlavie()}\n'
+        return retazec
 
 
 roznava = MestoObyvatelia('roznava')
@@ -33,6 +37,7 @@ roznava.uloz_obyvatela('Lucia', 27, 'z')
 roznava.uloz_obyvatela('Milan', 27, 'm')
 print(roznava.pocet_obyvatelov_podla_veku(27))
 print(roznava.pocet_podla_pohlavia('m'))
+print(roznava)
 
 
 
