@@ -13,6 +13,15 @@ class Obyvatel():
     def get_pohlavie(self):
         return self.__pohlavie
 
+    def __eq__(self, other):
+        if isinstance(other, Obyvatel):
+            if self.meno == other.meno:
+                return True
+            return False
+        return False
 
-#obyvatel1 = Obyvatel('Jozo', 18, 'm')
+
+obyvatel1 = Obyvatel('Jozo', 18, 'm')
 #print(obyvatel1)
+obyvatel2 = Obyvatel('Jozo', 50, 'm')
+print(obyvatel1 == obyvatel2)       # volam metodu __eq__
