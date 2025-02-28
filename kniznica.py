@@ -7,7 +7,7 @@ class Kniznica():
         self.zoznam = []
 
     def set_nazov(self, nazov):
-        if len(self.nazov) > 20:
+        if len(nazov) > 20:
             raise ValueError('Chyba dlhy nazov')
         else:
             self.nazov = nazov
@@ -18,12 +18,23 @@ class Kniznica():
 
     def vypis_knihy(self):
         for kniha in self.zoznam:
-            print(kniha.get_nazov())
+            print(kniha)
+
+    def celkova_hodnota_knih(self):
+        spolu_hodnota = 0
+        for kniha in self.zoznam:
+            suma_knihy = kniha.get_suma()
+            spolu_hodnota += suma_knihy
+            spolu_hodnota = round(spolu_hodnota, 2)
+        return f'{spolu_hodnota}' 
 
 
 betliar = Kniznica('Betliar')
-betliar.uloz_knihu('Harry Potter', 15.60)
-betliar.uloz_knihu('Zaklinac', 18)
+betliar.uloz_knihu('Harry Potter', 15.63)
+betliar.uloz_knihu('Zaklinac', 18.15)
+betliar.vypis_knihy()
+print(betliar.celkova_hodnota_knih())
+
 
 
 

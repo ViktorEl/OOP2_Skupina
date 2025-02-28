@@ -11,19 +11,19 @@ class Kniha():
             raise ValueError('chyba nazov musi byť slovo')
 
 
-    def set_suma(self, suma):
+    def __set_suma(self, suma):
         if not isinstance(suma, (int, float)):
             raise ValueError('chyba musite zadat cislo')
         self.__suma = suma
 
-    def get_suma(self):
+    def __get_suma(self):
         return self.__suma
 
     def get_nazov(self):
         return self.__nazov
 
 
-    suma = property(get_suma, set_suma)
+    suma = property(__get_suma, __set_suma)
 
     def __str__(self):
         return f'{self.__nazov} {self.__suma}'
@@ -37,6 +37,6 @@ class Kniha():
 
 
 
-
+objekt = Kniha('Harry', 15)
 
 
