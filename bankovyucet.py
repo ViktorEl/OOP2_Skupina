@@ -13,13 +13,6 @@ class BankovyUcet():
             raise ValueError('majitel neni string')
         self.__majitel = majitel
 
-
-    def set_zostatok(self , zostatok):
-        if not isinstance(zostatok , (int, float)):
-            raise ValueError('zostatok neni int ani float')
-        self.zostatok = zostatok
-    
-
     def get_majitel(self):
         return self.__majitel
 
