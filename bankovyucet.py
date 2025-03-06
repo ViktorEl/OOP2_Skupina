@@ -2,11 +2,11 @@
 class BankovyUcet():
 
     def __init__(self ,majitel, zostatok=0):
-        self.set_majitel(majitel)
+        self.__set_majitel(majitel)
         self.zostatok = zostatok
 
 
-    def set_majitel(self , majitel):
+    def __set_majitel(self , majitel):
         if majitel == "":
             raise ValueError('majitel nemoze byt prazdny')
         if not isinstance(majitel , str):
