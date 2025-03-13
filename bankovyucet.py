@@ -35,8 +35,8 @@ class BankovyUcet():
 
 
 
-ucet1 = BankovyUcet('Jozo')
-print(ucet1)
+#ucet1 = BankovyUcet('Jozo')
+#print(ucet1)
 
 
 
