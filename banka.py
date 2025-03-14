@@ -58,12 +58,46 @@ class Banka():
         self.__interny_ucet.vklad(poplatok_banke)
         ucet.vyber(ucet.get_zostatok())
         
+    def prevod(self, odosielatel, prijemca, suma):
+        ucet_odosielatela = self.najdi_ucet(odosielatel)
+        ucet_prijemca = self.najdi_ucet(prijemca)
+        suma_s_poplatkom = suma * 1.01
+        poplatok_banke = suma_s_poplatkom - suma
+        zostatok_odosielatel = ucet_odosielatela.get_zostatok()
+        if zostatok_odosielatel < suma_s_poplatkom:
+            raise ValueError('chyba nemate dostatok penazi na ucte')
+        ucet_odosielatela.vyber(suma_s_poplatkom)
+        ucet_prijemca.vklad(suma)
+        self.__interny_ucet.vklad(poplatok_banke)
 
+    def __str__(self):
+        vsetky_ucty = ''
+        for ucet in self.ucty:
+            vsetky_ucty += str(ucet) + '\n'
+        return vsetky_ucty
 
+    def uloz(self, nazov_suboru):
+        with open(nazov_suboru, 'w', encoding='utf-8') as f:
+            f.write(str(self))
+    
+    def nacitaj(self, nazov_suboru):
+        with open(nazov_suboru, 'r', encoding='utf-8') as f:
+            nacitany = f.read()
+            return nacitany
 
-        
+    def hodnota_banky(self):
+        spolu_hodnota = 0
+        for ucet in self.ucty:
+            suma = ucet.get_zostatok()
+            spolu_hodnota += suma
+        spolu_hodnota += self.__interny_ucet.get_zostatok()
+        return spolu_hodnota
 
 banka = Banka('Prima')
 banka.zaloz_ucet('Jozo')
 banka.zaloz_ucet('Jano')
 banka.vloz_na_ucet('Jano', 100)
+#banka.uloz('ucty.txt')
+#print(banka.nacitaj('ucty.txt'))
+banka.prevod('Jano', 'Jozo', 50)
+print(banka.hodnota_banky())
