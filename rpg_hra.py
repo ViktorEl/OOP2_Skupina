@@ -1,0 +1,39 @@
+class Postava():
+
+    def __init__(self, meno, uroven, zivoty):
+        self.set_meno(meno)
+        self.set_uroven(uroven)
+        self.set_zivoty(zivoty)
+
+    def get_meno(self):
+        return self.__meno
+    
+    def get_uroven(self):
+        return self.__uroven
+
+    def get_zivoty(self):
+        return self.__zivoty
+    
+    def set_meno(self, meno):
+        if not isinstance(meno, str):
+            raise ValueError('meno musi byt slovo')
+        if meno == "":
+            raise ValueError('Musite zadat meno')
+        self.__meno = meno
+
+    def set_uroven(self, uroven):
+        if not isinstance(uroven, int):
+            raise ValueError('Uroven musi byt cislo')
+        if uroven < 1 or uroven > 5:
+            raise ValueError('uroven musi byt od 1 do 5')
+        self.__uroven = uroven
+
+    def set_zivoty(self, zivoty):
+        if not isinstance(zivoty, int):
+            raise ValueError('Zivoty musia byt cislo')
+        if zivoty < 0 or zivoty > 20:
+                raise ValueError('Zivoty musia byt od 0 do 20')
+        self.__zivoty = zivoty
+
+    def utok(self):
+        return 'Postava útočí'
