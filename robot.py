@@ -6,7 +6,7 @@ class Robot():
         self.hmotnost = hmotnost
 
     def predstav_sa(self):
-        print(f'Volám sa {self.__meno} a moja hmotnost je {self.hmotnost}')
+        return f'Volám sa {self.__meno} a moja hmotnost je {self.hmotnost}'
 
     def __set_meno(self, meno):
         if len(meno) < 4:
@@ -21,7 +21,8 @@ class Robot():
     meno = property(__get_meno, __set_meno)
 
 
-#objekt1 = Robot('Jozo', 120)
+objekt1 = Robot('Jozo', 120)
 #objekt1.meno = 'Jo'                 # atribut vytvorený cez property/ v tomto pripade nevieme vytvorit nekorektný objekt
 #print(objekt1.meno)                  # pristupujem cez atribut meno, ktorý je vytvorený cez property 
 #objekt1.meno = 'Jozinko'
+#print(objekt1.predstav_sa())
