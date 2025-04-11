@@ -1,6 +1,7 @@
 from robot import Robot
 import tkinter
 from tkinter import messagebox
+import random
 
 class GUI(tkinter.Tk):
 
@@ -17,7 +18,7 @@ class GUI(tkinter.Tk):
 
 
     def prostredie(self):
-        tkinter.Button(self, text="Predstav sa", font=("Arial", 18), background="lightblue", command=lambda: (self.zobraz_obrazok(), self.predstavenie())).place(x=0, y=0)
+        tkinter.Button(self, text="Predstav sa", font=("Arial", 18), background="lightblue", command=self.vypis_a_zobraz).place(x=0, y=0)
         self.text_predstav_sa = tkinter.StringVar() # specialna stringvarova premenna pre gui
         tkinter.Entry(self, textvariable=self.text_predstav_sa, font=("Arial", 18), background="lightgreen", width=40).place(x=150, y=15)
         tkinter.Button(self, text="Vymaž", font=("Arial", 15), background="red", foreground="white", command=self.vymazanie).place(x=680, y=5)    # nastavenie commandu pomocou lambdy: lambda: self.text_predstav_sa.set("")
@@ -33,6 +34,7 @@ class GUI(tkinter.Tk):
 
     def vymazanie(self):
         self.text_predstav_sa.set("")
+        self.canvas.delete("all")
 
     def zmen_meno(self):
         try:
@@ -41,8 +43,13 @@ class GUI(tkinter.Tk):
             messagebox.showerror("chyba", chyba)
 
     def zobraz_obrazok(self):
-        self.obrazok = tkinter.PhotoImage(file="robotik.png")
-        self.canvas.create_image(50, 50, anchor=tkinter.CENTER, image=self.obrazok)
+        self.canvas.delete("all")
+        zoznam = ["robot.png", "robot2.png", "robot3.png", "robotik.png"]
+        self.obrazok = tkinter.PhotoImage(file=random.choice(zoznam))
+        self.canvas.create_image(100,100, image=self.obrazok)
 
+    def vypis_a_zobraz(self):
+        self.predstavenie()
+        self.zobraz_obrazok()
 
 GUI()
